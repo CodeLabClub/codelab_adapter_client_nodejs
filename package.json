@@ -1,0 +1,28 @@
+{
+  "name": "codelab_adapter_client_nodejs",
+  "version": "0.1.0",
+  "description": "nodejs client of CodeLab Adapter v2.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Scratch3Lab/codelab_adapter_client_nodejs.git"
+  },
+  "dependencies": {
+    "msgpack-lite": "^0.1.26",
+    "zeromq": "^5.1.0"
+  },
+  "keywords": [
+    "codelab_adapter",
+    "scratch",
+    "scratch3"
+  ],
+  "author": "wwj718",
+  "license": "GPLV3",
+  "bugs": {
+    "url": "https://github.com/Scratch3Lab/codelab_adapter_client_nodejs/issues"
+  },
+  "homepage": "https://github.com/Scratch3Lab/codelab_adapter_client_nodejs#readme"
+}
