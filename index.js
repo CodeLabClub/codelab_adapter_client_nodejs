@@ -31,8 +31,9 @@ class MessageNode {
 
     // print a header to the console
     console.log(`\n************************************************************\n
-        using Back Plane IP address: ${codelab_adapter_ip_address}\n
-        Subscriber Port = ${this.subscriber_list}\n
+        Codelab Adapter ip address: ${this.codelab_adapter_ip_address}\n
+        Codelab Adapter ip address: ${this.codelab_adapter_ip_address}\n
+        Subscriber Port = ${this.subscriber_port}\n
         Publisher  Port = ${this.publisher_port}\n
         ************************************************************\n`);
 
