@@ -4,10 +4,11 @@
 const msgpack = require("msgpack-lite");
 const zmq = require("zeromq");
 
-const ADAPTER_TOPIC = "from_adapter/extensions";
-const SCRATCH_TOPIC = "from_scratch/extensions";
-const NOTIFICATION_TOPIC = "notification";
-const EXTENSIONS_OPERATE_TOPIC = "adapter_core/extensions/operate";
+const ADAPTER_TOPIC = "adapter/extensions/data";
+const SCRATCH_TOPIC = "scratch/extensions/command";
+const EXTENSIONS_OPERATE_TOPIC = "core/extensions/operate";
+const EXTENSIONS_STATUS_TOPIC = "core/extensions/status";
+const NOTIFICATION_TOPIC = "core/notification";
 
 class MessageNode {
   constructor(
