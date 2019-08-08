@@ -1,5 +1,5 @@
 const AdapterNode = require('codelab_adapter_client_nodejs');
-const ADAPTER_TOPIC = "from_adapter/extensions";
+const ADAPTER_TOPIC = "adapter/extensions/data";
 
 
 class EIMNode extends AdapterNode {
