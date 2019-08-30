@@ -1,6 +1,6 @@
 {
   "name": "codelab_adapter_client_nodejs",
-  "version": "0.4.0",
+  "version": "0.5.1",
   "description": "nodejs client of CodeLab Adapter v2.",
   "main": "index.js",
   "scripts": {
