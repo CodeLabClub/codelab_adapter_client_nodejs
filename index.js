@@ -7,7 +7,10 @@ const zmq = require("zeromq");
 const ADAPTER_TOPIC = "adapter/extensions/data";
 const SCRATCH_TOPIC = "scratch/extensions/command";
 const EXTENSIONS_OPERATE_TOPIC = "core/extensions/operate";
+const NODES_OPERATE_TOPIC = "core/nodes/operate";
 const EXTENSIONS_STATUS_TOPIC = "core/extensions/status";
+const EXTENSIONS_STATUS_TRIGGER_TOPIC = "core/extensions/status/trigger";
+const EXTENSION_STATU_CHANGE_TOPIC = "core/extension/statu/change";
 const NOTIFICATION_TOPIC = "core/notification";
 
 class MessageNode {
@@ -16,8 +19,8 @@ class MessageNode {
     codelab_adapter_ip_address = undefined,
     subscriber_port = "16103",
     publisher_port = "16130",
-    subscriber_list = [SCRATCH_TOPIC, EXTENSIONS_OPERATE_TOPIC]
-  ){
+    subscriber_list = [SCRATCH_TOPIC, NODES_OPERATE_TOPIC]
+  ) {
     this.name = name;
     this.subscriber_port = subscriber_port;
     this.publisher_port = publisher_port;
@@ -40,7 +43,7 @@ class MessageNode {
     // Setup and connect to the subscriber socket on the message hub.
     this.subscriber = zmq.socket("sub");
     this.subscriber.connect(
-      "tcp://" + this.codelab_adapter_ip_address + ":" + this.publisher_port
+      "tcp://" + this.codelab_adapter_ip_address + ":" + this.subscriber_port
     );
 
     this.publisher = zmq.socket("pub");
@@ -57,6 +60,7 @@ class MessageNode {
   set_subscriber_topic(topic) {
     if (typeof topic === "string" || topic instanceof String) {
       this.subscriber.subscribe(topic);
+      console.log(`sub topic: ${topic}`);
     } else {
       //Throw an exception
       throw Error("Topic must be of string type");
@@ -97,15 +101,16 @@ class MessageNode {
 class AdapterNode extends MessageNode {
   // todo : https://github.com/wwj718/codelab_adapter_client/blob/master/codelab_adapter_client/base.py#L179
   constructor(
-    name = "", 
+    name = "",
     codelab_adapter_ip_address = undefined,
-    subscriber_list = [SCRATCH_TOPIC, EXTENSIONS_OPERATE_TOPIC]) {
-        super({
-            name: name,
-            codelab_adapter_ip_address:codelab_adapter_ip_address,
-            subscriber_list:subscriber_list
-            });
-  } 
+    subscriber_list = [SCRATCH_TOPIC, NODES_OPERATE_TOPIC]
+  ) {
+    super({
+      name: name,
+      codelab_adapter_ip_address: codelab_adapter_ip_address,
+      subscriber_list: subscriber_list
+    });
+  }
 }
 
 module.exports = AdapterNode;
